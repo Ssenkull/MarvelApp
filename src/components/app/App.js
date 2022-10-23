@@ -1,4 +1,4 @@
-import { Component } from "react/cjs/react.production.min";
+import { Component } from "react";
 import AppHeader from "../appHeader/AppHeader";
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
@@ -7,8 +7,8 @@ import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 import decoration from '../../resources/img/vision.png';
 
-class App extends Component{
-
+class App extends Component {
+    
     state = {
         selectedChar: null
     }
@@ -24,9 +24,13 @@ class App extends Component{
             <div className="app">
                 <AppHeader/>
                 <main>
-                    <RandomChar/>
+                    <ErrorBoundary>
+                        <RandomChar/>
+                    </ErrorBoundary>
                     <div className="char__content">
-                        <CharList onCharSelected={this.onCharSelected}/>
+                        <ErrorBoundary>
+                            <CharList onCharSelected={this.onCharSelected}/>
+                        </ErrorBoundary>
                         <ErrorBoundary>
                             <CharInfo charId={this.state.selectedChar}/>
                         </ErrorBoundary>
