@@ -7,4 +7,3 @@ import img from './error.gif';
 }
 
 export default ErrorMessage;
-
